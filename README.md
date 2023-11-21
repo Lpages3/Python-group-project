@@ -1,3 +1,3 @@
 # Software group project
-- how to get it strated ?
+### write how to get it strated ?
 
