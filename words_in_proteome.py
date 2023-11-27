@@ -17,9 +17,24 @@ def read_words():
     
     except FileNotFoundError:
         print("File not found.")
-    
-    return mots_filtres
-read_words()
+def read_sequences(file_path):
+    sequences = {}
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        identifier = None
+        sequence = ''
+        for line in lines:
+            if line.startswith('>'):  # Identifying the protein identifier
+                if identifier:
+                    sequences[identifier] = sequence
+                identifier = line.strip().split('|')[1]  # Extracting protein identifier
+                sequence = ''
+            else:  # Accumulating protein sequence
+                sequence += line.strip()
+        if identifier and sequence:  # Adding the last protein sequence
+            sequences[identifier] = sequence
+    return sequences
+
 def read_sequences(file_path):
     sequences = {}
     with open(file_path, 'r') as file:
@@ -55,3 +70,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+  
