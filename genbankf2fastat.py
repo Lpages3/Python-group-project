@@ -1,6 +1,22 @@
 
 
 
+def extract_organism(file_content):
+    organism_line = None
+
+    for line in file_content:
+        if line.startswith("ORGANISM"):
+            organism_line = line.strip()
+            break  # Stop searching once the first occurrence is found
+
+    if organism_line:
+        # Extract the organism name from the line
+        organism_name = organism_line.split(" ", 1)[1].strip()
+        return organism_name
+    else:
+        print("Error: Organism information not found in the file.")
+        return None
+
 
 def write_fasta(file_name, comment, sequence):
     with open(file_name, 'w') as fasta_file:
