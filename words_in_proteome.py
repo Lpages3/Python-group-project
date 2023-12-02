@@ -54,4 +54,16 @@ def main():
 if __name__ == "__main__":
     main()
 
+def find_most_frequent_word(words_dict):
+    if not words_dict:
+        print("The input dictionary is empty.")
+        return
 
+    # Find the word with the maximum occurrence
+    max_word = max(words_dict, key=lambda k: len(words_dict[k]))
+
+    # Display the result
+    print(f"=> {max_word} found in {len(words_dict[max_word])} sequences")
+
+
+find_most_frequent_word()
