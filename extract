@@ -1,0 +1,52 @@
+def extract_sequence(file_content):
+    # Initialize variables
+    is_dnaseq = False
+    sequence = ''
+
+    # Process each line in the file content
+    for line in file_content:
+        line = line.strip()
+
+        if line == "//":
+            is_dnaseq = False
+
+        if is_dnaseq:
+            # Remove spaces, digits, and newline characters
+            line = ''.join(filter(str.isalpha, line))
+            sequence += line
+
+        if line == "ORIGIN":
+            is_dnaseq = True
+
+    return sequence
+
+# Read the content of the GenBank file
+def read_file(file_path):
+    with open(file_path, 'r') as file:
+        content = file.readlines()
+    return content
+
+# File path to your GenBank file (NC_001133.gbk)
+file_path = 'NC_001133.gbk'
+
+# Read the file content
+file_content = read_file(file_path)
+
+# Extract the nucleotide sequence
+genome_sequence = extract_sequence(file_content)
+
+# Remove numbers, spaces, and carriage returns
+cleaned_sequence = ''.join(filter(str.isalpha, genome_sequence))
+
+# Display the number of bases in the extracted sequence
+print(f"Number of bases in the extracted sequence: {len(cleaned_sequence)}")
+
+# Check the genome size mentioned in the GenBank file (extracted from the first line)
+genome_size_line = file_content[0].split()
+genome_size = int(genome_size_line[-2])
+
+# Verify the extracted sequence size matches the one mentioned in the GenBank file
+if len(cleaned_sequence) == genome_size:
+    print("Size of the extracted sequence matches the size mentioned in the GenBank file.")
+else:
+    print("There might be an issue with the extracted sequence size.")

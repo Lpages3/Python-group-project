@@ -37,7 +37,7 @@ def read_sequences(file_path):
 
 
 def main():
-    file_path = "C:/Users/pages/Documents/Université/Cours/Cours Master 1 Eco-Evo/Software dev/Python-group-project/proteins.py"  # Replace with the actual file path
+    file_path = "/Users/lucyarnaud/Desktop/cours_M1/Github_project/Python-group-project/proteins.py"  # Replace with the actual file path
     sequences = read_sequences(file_path)
     
     # Display the number of sequences read
