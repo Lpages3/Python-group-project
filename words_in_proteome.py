@@ -67,18 +67,16 @@ if __name__ == "__main__":
 #SEARCHING FOR WORDS 
 
 def search_words_in_proteome(mots_filtres, sequences_dict):
-    sequences_with_words = {word: {'count': 0, 'occurrences': 0} for word in mots_filtres} #We add 'occurrences" key to keep track of the total number of times the word appears accross all protein sequences 
+    sequences_with_words = {word: 0 for word in mots_filtres} 
 
     for word in mots_filtres:
         for sequence_id, sequence in sequences_dict.items():
             if word in sequence:
-                sequences_with_words[word]['count'] += 1 #Insertion of 'count' method in order to compute the number of occurrences of each word in the sequences
-                sequences_with_words[word]['occurrences'] += sequence.count(word)
+                sequences_with_words[word] += 1 #Insertion of 'count' method in order to compute the number of occurrences of each word in the sequences
 
     # Affichage des messages demandés
     for word, count in sequences_with_words.items():
         print(f"{word} found in {count['count']} sequences")
-        print(f"Total occurrences of {word}: {counts['occurrences']}")
 
     return sequences_with_words
 
@@ -86,11 +84,10 @@ def search_words_in_proteome(mots_filtres, sequences_dict):
 
 def find_most_frequent_word(dictionnaire_mots_sequences):
     mot_plus_frequent = max(dictionnaire_mots_sequences, key=dictionnaire_mots_sequences.get)
-    nombre_sequences = dictionnaire_mots_sequences[mot_plus_frequent]
     compte = dictionnaire_mots_sequences[mot_plus_frequent]
 
 
-    print(f"=> {mot_plus_frequent} found in {nombre_sequences} séquences")
+    print(f"=> {mot_plus_frequent} found in {compte} séquences")
     print("2. What is this word ?")
     print("This word is : ",mot_plus_frequent)
     print("What percentage of the proteome sequences contain this word ?")
