@@ -67,7 +67,7 @@ if __name__ == "__main__":
 #SEARCHING FOR WORDS 
 
 def search_words_in_proteome(mots_filtres, sequences_dict):
-    sequences_with_words = {word: {'count': 0, 'occurrences': 0} for word in mots_filtres}
+    sequences_with_words = {word: {'count': 0, 'occurrences': 0} for word in mots_filtres} #We add 'occurrences" key to keep track of the total number of times the word appears accross all protein sequences 
 
     for word in mots_filtres:
         for sequence_id, sequence in sequences_dict.items():
