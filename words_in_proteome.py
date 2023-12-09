@@ -82,6 +82,19 @@ def search_words_in_proteome(mots_filtres, sequences_dict):
 
 #THE MOST FREQUENT WORD
 
+def find_most_frequent_word(dictionnaire_mots_sequences):
+    mot_plus_frequent = max(dictionnaire_mots_sequences, key=dictionnaire_mots_sequences.get)
+    nombre_sequences = dictionnaire_mots_sequences[mot_plus_frequent]
+    compte = dictionnaire_mots_sequences[mot_plus_frequent]
+
+
+    print(f"=> {mot_plus_frequent} found in {nombre_sequences} séquences")
+    print("2. What is this word ?")
+    print("This word is : ",mot_plus_frequent)
+    print("What percentage of the proteome sequences contain this word ?")
+    nombre_total_sequences = len(sequences_dict)  # Assuming that sequences_dict contains all the sequences in the proteome
+    pourcentage = (compte / nombre_total_sequences) * 100
+    print(round(pourcentage, 2),"% of the proteome sequences contain this word.")
 
 #BEING MORE COMPREHENSIVE
 
