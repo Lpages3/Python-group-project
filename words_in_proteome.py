@@ -67,16 +67,18 @@ if __name__ == "__main__":
 #SEARCHING FOR WORDS 
 
 def search_words_in_proteome(mots_filtres, sequences_dict):
-    sequences_with_words = {word: 0 for word in mots_filtres}
+    sequences_with_words = {word: {'count': 0, 'occurrences': 0} for word in mots_filtres}
 
     for word in mots_filtres:
         for sequence_id, sequence in sequences_dict.items():
             if word in sequence:
-                sequences_with_words[word] += 1
+                sequences_with_words[word]['count'] += 1 #Insertion of 'count' method in order to compute the number of occurrences of each word in the sequences
+                sequences_with_words[word]['occurrences'] += sequence.count(word)
 
     # Affichage des messages demandés
     for word, count in sequences_with_words.items():
-        print(f"{word} found in {count} sequences")
+        print(f"{word} found in {count['count']} sequences")
+        print(f"Total occurrences of {word}: {counts['occurrences']}")
 
     return sequences_with_words
 
