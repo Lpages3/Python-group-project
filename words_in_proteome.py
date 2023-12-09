@@ -1,9 +1,10 @@
 #WORDS
 
-def read_words():
+mots_filtres = []
     
-    a = 'english-common-words.txt'
-    mots_filtres = []
+def read_words(file_path):
+    
+    a = file_path
     try:
         with open(a, 'r') as fichier:
             for ligne in fichier:
@@ -15,6 +16,10 @@ def read_words():
         print(mots_filtres)
         long_mots_filtres = len(mots_filtres)
         print("The number of selected wotds are :",long_mots_filtres)
+        return long_mots_filtres
+    except FileNotFoundError:
+        print(f"Fichier '{a}' introuvable.")
+        return 0
         
 #PROTEINS
    
