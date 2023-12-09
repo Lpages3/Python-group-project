@@ -39,20 +39,22 @@ def read_sequences(file_path):
     return sequences
 
 
+import requests
+
 def main():
-    file_path = "C:/Users/pages/Documents/Université/Cours/Cours Master 1 Eco-Evo/Software dev/Python-group-project/proteins.py"  # Replace with the actual file path
-    sequences = read_sequences(file_path)
+    github_raw_url = 'https://raw.githubusercontent.com/Lpages3/Python-group-project/main/proteins.py?token=GHSAT0AAAAAACLMLSFRM44WEQFH4OH5CD4EZLUD45A'  # Remplacez cela par l'URL brute du fichier
+    response = requests.get(github_raw_url)
     
-    # Display the number of sequences read
-    print(f"Number of sequences read: {len(sequences)}")
-    
-    # Display the sequence associated with protein O95139
-    protein_id = 'O95139'
-    if protein_id in sequences:
-        print(f"Sequence for protein {protein_id}:")
-        print(sequences[protein_id])
+    if response.status_code == 200:
+        content = response.text
+        # Maintenant, 'content' contient le contenu du fichier spécifié sur GitHub
+        # Utilisez 'content' comme vous le souhaitez dans votre script
+        # Par exemple, vous pouvez exécuter exec(content) pour exécuter le code directement
+        
+        # Vous pouvez lire les lignes du contenu ou le traiter comme un script Python
+        print(content)
     else:
-        print(f"No sequence found for protein {protein_id}")
+        print("Erreur lors de la récupération du fichier depuis GitHub")
 
 if __name__ == "__main__":
     main()
