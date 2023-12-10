@@ -49,7 +49,16 @@ def find_genes(file_content):
             is_antisense = 'complement' in line  # Check if it's an antisense gene
             line = line.replace('     gene            ', '')  # Remove unnecessary prefix
             line = line.replace('<', '').replace('>', '')  # Remove < and > symbols
-            start, end = map(int, line.split('..'))  # Split and convert to integers
+
+            # Extract the start and end positions
+            if '..' in line:
+                start, end = map(int, line.split('..'))
+            elif 'complement' in line:
+                # Handle complement notation
+                start, end = map(int, line.split('(')[1].split('..'))
+            else:
+                # Handle cases where start and end are not explicitly mentioned
+                start = end = int(line.strip())
 
             if is_antisense:
                 genes.append([start, end, 'antisense'])
