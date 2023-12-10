@@ -8,7 +8,7 @@ def read_words(file_path):
     try:
         with open(a, 'r') as fichier:
             for ligne in fichier:
-                mots = ligne.split()  # Séparation des mots dans la ligne
+                mots = ligne.split()  # separing words by line
                 for mot in mots:
                     if mot.isupper() and len(mot) >= 3:
                         mots_filtres.append(mot)
@@ -47,16 +47,12 @@ def read_sequences(file_path):
 import requests
 
 def main():
-    github_raw_url = 'https://raw.githubusercontent.com/Lpages3/Python-group-project/main/proteins.py?token=GHSAT0AAAAAACLMLSFRM44WEQFH4OH5CD4EZLUD45A'  # Remplacez cela par l'URL brute du fichier
+    github_raw_url = 'https://raw.githubusercontent.com/Lpages3/Python-group-project/main/proteins.py?token=GHSAT0AAAAAACLMLSFRM44WEQFH4OH5CD4EZLUD45A'  
     response = requests.get(github_raw_url)
     
     if response.status_code == 200:
         content = response.text
-        # Maintenant, 'content' contient le contenu du fichier spécifié sur GitHub
-        # Utilisez 'content' comme vous le souhaitez dans votre script
-        # Par exemple, vous pouvez exécuter exec(content) pour exécuter le code directement
         
-        # Vous pouvez lire les lignes du contenu ou le traiter comme un script Python
         print(content)
     else:
         print("Erreur lors de la récupération du fichier depuis GitHub")
@@ -95,9 +91,6 @@ def find_most_frequent_word(dictionnaire_mots_sequences):
     pourcentage = (compte / nombre_total_sequences) * 100
     print(round(pourcentage, 2),"% of the proteome sequences contain this word.")
 
-#BEING MORE COMPREHENSIVE
-
-
 #we execute every fonctions at the end of the first part : displaying all results 
 
 # Appel de la fonction read_words()
@@ -121,6 +114,3 @@ sequences_with_words_dict = search_words_in_proteome(mots_filtres, sequences_dic
 
 # Using the find_most_frequent_word() function with the returned dictionary
 find_most_frequent_word(sequences_with_words_dict)
-
-# Call the search_words_in_proteome2() function and store the returned dictionary in a variable
-sequences_with_words_dict2 = search_words_in_proteome2(mots_filtres, sequences_dict)
