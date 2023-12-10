@@ -8,7 +8,7 @@ def read_words(file_path):
     try:
         with open(a, 'r') as fichier:
             for ligne in fichier:
-                mots = ligne.split()  # Séparation des mots dans la ligne
+                mots = ligne.split()  # words split
                 for mot in mots:
                     if mot.isupper() and len(mot) >= 3:
                         mots_filtres.append(mot)
@@ -52,11 +52,6 @@ def main():
     
     if response.status_code == 200:
         content = response.text
-        # Maintenant, 'content' contient le contenu du fichier spécifié sur GitHub
-        # Utilisez 'content' comme vous le souhaitez dans votre script
-        # Par exemple, vous pouvez exécuter exec(content) pour exécuter le code directement
-        
-        # Vous pouvez lire les lignes du contenu ou le traiter comme un script Python
         print(content)
     else:
         print("Erreur lors de la récupération du fichier depuis GitHub")
