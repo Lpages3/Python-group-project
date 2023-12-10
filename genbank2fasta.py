@@ -89,7 +89,7 @@ def main():
 if __name__ == "__main__":
     main()
     
-#EXTRACTING THE NUCLEOTIDE SEQUENCE OF THE GENOME
+    #EXTRACTING THE NUCLEOTIDE SEQUENCE OF THE GENOME
 
 def extract_sequence(file_content):
     dna_sequence = extract_sequence(file_content) #Utilisation de la fonction extract_sequence()
@@ -111,6 +111,8 @@ def extract_sequence(file_content):
 
     return dna_sequence
 
+        #CREATING THE REVERSE COMPLEMENTARY SEQUENCE
+        
 # Function to construct the reverse complementary sequence
 def construct_comp_inverse(dna_sequence):
     complement = {'a': 't', 't': 'a', 'c': 'g', 'g': 'c'}
@@ -151,3 +153,54 @@ def main():
                 print(f"Original Sequence: {seq}, Reverse Complement: {reverse_comp_seq}")
         else:
             print("Failed to extract sequence or sequence is empty.")
+            
+        #WRITING A FASTA FILE
+        
+def write_fasta(file_name, comment, sequence):
+    try:
+        with open(file_name, 'w') as file:
+            # Write the comment line
+            file.write(f">{comment}\n")
+            
+            # Write the sequence in lines no longer than 80 characters
+            for i in range(0, len(sequence), 80):
+                file.write(sequence[i:i+80] + '\n')
+
+        print(f"File '{file_name}' created successfully.")
+    except Exception as e:
+        print(f"Error: {e}")
+
+file_name = 'NC_001133.gbk'
+
+         #EXTRACTING GENES
+        
+def extract_genes(genes, complete_sequence, organism_name):
+    for i, gene in enumerate(genes, start=1):
+        start, end, gene_type = gene
+
+        # Extract the gene's sequence
+        gene_sequence = complete_sequence[start-1:end]
+
+        # If the gene is antisense, take the reverse complementary sequence
+        if gene_type == 'antisense':
+            gene_sequence = construct_comp_inverse(gene_sequence)
+
+        # Create the FASTA file for the gene
+        gene_comment = f"{organism_name}|{i}|{start}|{end}|{gene_type}"
+        gene_file_name = f"gene_{i}.fasta"
+        write_fasta(gene_file_name, gene_comment, gene_sequence)
+
+        print(f"Gene {i} saved in '{gene_file_name}'")
+
+    
+#Use of  read_file() function
+file_content = read_file(file_name)
+   
+# Extract gene information
+genes = find_genes(file_content)
+
+#Use of extract_sequence() function
+dna_sequence = extract_sequence(file_content)
+
+# use of extract_genes() function 
+extract_genes(genes, dna_sequence, organism_name)
