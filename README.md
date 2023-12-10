@@ -21,6 +21,12 @@ Extracting genes
 Building the final script 
 
 
+Comprehensive Project Description 
+
+This description will provide a broad overview of this project and its stages, processes and objectives. 
+The problem and obstacles encoutered during certain processes will be briefly discussed. 
+
+
 
 Introduction
 
