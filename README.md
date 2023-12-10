@@ -30,17 +30,24 @@ The problem and obstacles encoutered during certain processes will be briefly di
 
 Introduction
 
-This group project's main goal was to create an extensive codebase and documentation that are kept in a GitHub repository called "pythongroup-project." This repository's accessibility and readability are enhanced by its particular directory structure. There are three subdirectories in the structure: words, convert, and pygen. Each of these contains pertinent __init__.py files. The Readme.md file is an essential component that offers a detailed description of the project along with a working example that highlights the functionality of the code. This project allowed us to be more comfortable with python and be able to gain experience and knowledge in this field. 
-The first phase of the project aims to conduct a scientific investigation into the occurrence of English words in the human proteome sequences. First, the 20 amino acids are used to create English words. Next, the 3000 most common English words are retrieved and processed from an external file.
+This group project's main goal was to create an extensive codebase and documentation that are kept in a GitHub repository called "pythongroup-project.". There are three subdirectories in the structure: words_in_proteome, genbank2fasta, and pygen. Each of these contains pertinent __init__.py files. There is also a Readme.md file which is an essential component that gives a detailed description of the project along with a working example that highlights the functionality of the code. 
 
-The project then requires that the human proteome sequences be acquired from a specified file that was obtained from the UniProt database. It is necessary to write functions that can read these sequences and look for English words in them. It is necessary to ascertain the frequency of word occurrences within sequences, with a focus on determining the word that occurs the most frequently and estimating its prevalence within the proteome.
+
+I- English Words in Proteome
+
+The first part of the project called "ENGLISH WORDS IN PROTEOME" aims to search for occurrence of English words in the human proteome sequences. First, the 20 amino acids are used to create English words. Next, the 3000 most common English words are retrieved and processed from an external file.
+
+The project then requires that the human proteome sequences be acquired from a specified file that was obtained from the UniProt database. It is necessary to write functions that can read these sequences and look for English words in them. It is necessary to analyze the frequency of word occurrences within sequences, with a focus on determining the word that occurs the most frequently and estimating its abundance within the proteome.
+
+II- GENBANK TO FASTA CONVERTER
 
 Using the genetic data found in the Saccharomyces cerevisiae yeast chromosome I file, the next project phase entails converting GenBank files to FASTA format. Reading the file, extracting the names of the organisms, identifying and differentiating between sense and antisense genes, extracting the genome's nucleotide sequence, creating reverse complementary sequences, creating FASTA files, and extracting genes with their corresponding sequences are among the functionalities that still need to be developed.
 
 
 Rewriting the script to include command-line arguments for the GenBank file analysis is the last step. If the supplied file is not present or the script is run without arguments, error messages will be shown. During this phase, the os and sys modules will be used to handle file inputs efficiently.
 
-Overall, the project demonstrates a multidisciplinary approach integrating computational and biological sciences by requiring extensive documentation, structured code development, collaborative Git usage, and thorough exploration of biological data formats.
+
+In the section below, you can find the summary of the code and functions used in the project for both principal parts.
 
 Words 
 r = requests.get(url) variable holds the URL string pointing to a resource on the web. In this case, it seems to be a link to a FASTA file containing the human proteome data.
@@ -73,4 +80,7 @@ The main() function executes various operations on the GenBank file.
 After extracting the DNA sequence from the file, it conducts a test by creating reverse complementary sequences for a set of test sequences ('atcg', 'AATTCCGG', 'gattaca').
 For each test sequence, it converts the sequence to lowercase (.lower()) and calls the construct_comp_inverse() function to obtain the reverse complementary sequence, then prints the original sequence and its reverse complement.
 
+Problems: A lot of problems were due to conflict issues after trying to merge branches. In fact, sometimes, one person created a branch but, meanwhile, another person could commit changes in the main branch before merging the modifications brought to a specific or several files. To resolve these conflicts, we used the tool included in VScode (merge editor) to solve these problems of merging. Usually, it showed the differences between the diverging files and asked if we wanted to accept the current code or the incomming code that was written in branch.
 
+
+Conclusion: To conclude, this project allowed us to be more comfortable with python and be able to gain experience and knowledge in this field. Overall, with this project, we had to develop a multidisciplinary approach integrating computational and biological sciences. This project required extensive documentation, structured code development, collaborative Git usage, and thorough exploration of biological data formats.
