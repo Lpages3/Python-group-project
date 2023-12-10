@@ -28,19 +28,19 @@ def read_words(file_path):
 def read_sequences(file_path):
     sequences = {}
     with open(file_path, 'r') as file:
-        lines = file.readlines()
         identifier = None
         sequence = ''
-        for line in lines:
+        for line in file:
+            line = line.strip()
             if line.startswith('>'):  # Identifying the protein identifier
-                if identifier:
-                    sequences[identifier] = sequence
-                identifier = line.strip().split('|')[1]  # Extracting protein identifier
-                sequence = ''
+                parts = line.split('|')
+                if len(parts) > 1:
+                    identifier = parts[1]  # Extracting protein identifier
+                    sequence = ''
             else:  # Accumulating protein sequence
-                sequence += line.strip()
-        if identifier and sequence:  # Adding the last protein sequence
-            sequences[identifier] = sequence
+                sequence += line
+                if identifier and sequence:  # Adding the last protein sequence
+                    sequences[identifier] = sequence
     return sequences
 
 
@@ -67,13 +67,14 @@ def search_words_in_proteome(mots_filtres, sequences_dict):
     for word in mots_filtres:
         for sequence_id, sequence in sequences_dict.items():
             if word in sequence:
-                sequences_with_words[word] += 1 #Insertion of 'count' method in order to compute the number of occurrences of each word in the sequences
+                sequences_with_words[word] += 1  # Increment count for the word
 
-    # Affichage des messages demandés
+    # Display the counts
     for word, count in sequences_with_words.items():
-        print(f"{word} found in {count['count']} sequences")
+        print(f"{word} found in {count} sequences")
 
     return sequences_with_words
+
 
 #THE MOST FREQUENT WORD
 
@@ -98,13 +99,13 @@ def find_most_frequent_word(dictionnaire_mots_sequences):
 # Appel de la fonction read_words()
 read_words('english-common-words.txt')
 
-# Lecture des séquences de protéines
+# Lecture 
 sequences_dict = read_sequences('human-proteome.fasta')
 
 # display the number of sequences read
 print(f"Number of sequences read : {len(sequences_dict)}")
 
-# Affichage de la séquence associée à la protéine O95139 (à des fins de test)
+# show the sequence  prot O95139 
 protein_id = 'O95139'
 print("sequence associated with the protein O95139",protein_id)
 print(sequences_dict[protein_id])
@@ -118,4 +119,8 @@ sequences_with_words_dict = search_words_in_proteome(mots_filtres, sequences_dic
 find_most_frequent_word(sequences_with_words_dict)
 
 # Call the search_words_in_proteome2() function and store the returned dictionary in a variable
+def search_words_in_proteome2(mots_filtres, sequences_dict):
+    # Define the functionality of search_words_in_proteome2 here
+    pass
+
 sequences_with_words_dict2 = search_words_in_proteome2(mots_filtres, sequences_dict)
