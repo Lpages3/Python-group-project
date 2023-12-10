@@ -41,6 +41,7 @@ if __name__ == "__main__":
     main()
 
 # Function to find genes in the GenBank file content
+
 def find_genes(file_content):
     genes = []
 
@@ -51,14 +52,12 @@ def find_genes(file_content):
             line = line.replace('<', '').replace('>', '')  # Remove < and > symbols
 
             # Extract the start and end positions
-            if '..' in line:
-                start, end = map(int, line.split('..'))
-            elif 'complement' in line:
-                # Handle complement notation
-                start, end = map(int, line.split('(')[1].split('..'))
+            positions = [int(pos.strip()) for pos in line.replace('complement(', '').replace(')', '').split('..')]
+
+            if len(positions) == 1:
+                start = end = positions[0]
             else:
-                # Handle cases where start and end are not explicitly mentioned
-                start = end = int(line.strip())
+                start, end = positions
 
             if is_antisense:
                 genes.append([start, end, 'antisense'])
