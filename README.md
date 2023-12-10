@@ -80,5 +80,7 @@ The main() function executes various operations on the GenBank file.
 After extracting the DNA sequence from the file, it conducts a test by creating reverse complementary sequences for a set of test sequences ('atcg', 'AATTCCGG', 'gattaca').
 For each test sequence, it converts the sequence to lowercase (.lower()) and calls the construct_comp_inverse() function to obtain the reverse complementary sequence, then prints the original sequence and its reverse complement.
 
+Problems: A lot of problems were due to conflict issues after trying to merge branches. In fact, sometimes, one person created a branch but, meanwhile, another person could commit changes in the main branch before merging the modifications brought to a specific or several files. To resolve these conflicts, we used the tool included in VScode (merge editor) to solve these problems of merging. Usually, it showed the differences between the diverging files and asked if we wanted to accept the current code or the incomming code that was written in branch.
+
 
 Conclusion: To conclude, this project allowed us to be more comfortable with python and be able to gain experience and knowledge in this field. Overall, with this project, we had to develop a multidisciplinary approach integrating computational and biological sciences. This project required extensive documentation, structured code development, collaborative Git usage, and thorough exploration of biological data formats.
