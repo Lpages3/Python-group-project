@@ -88,3 +88,26 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+#EXTRACTING THE NUCLEOTIDE SEQUENCE OF THE GENOME
+
+def extract_sequence(file_content):
+    dna_sequence = extract_sequence(file_content) #Utilisation de la fonction extract_sequence()
+    is_dnaseq = False
+    dna_sequence = ""
+
+    for line in file_content:
+        if line.strip() == "//":
+            is_dnaseq = False
+        if is_dnaseq:
+            # Remove digits, spaces, and special characters from the sequence
+            dna_sequence += ''.join(filter(lambda x: x.lower() in 'actg', line))
+        if line.startswith("ORIGIN"):
+            is_dnaseq = True
+
+    # Calculate the length of the sequence
+    sequence_length = len(dna_sequence)
+    print(f"Number of bases in the extracted sequence: {sequence_length}")
+
+    return dna_sequence
+
