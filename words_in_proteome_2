@@ -1,0 +1,134 @@
+#WORDS 
+
+mots_filtres = []
+    
+def read_words(file_path):
+    
+    a = file_path
+    try:
+        with open(a, 'r') as fichier:
+            for ligne in fichier:
+                mots = ligne.split()  # Séparation des mots dans la ligne
+                for mot in mots:
+                    if mot.isupper() and len(mot) >= 3:
+                        mots_filtres.append(mot)
+    
+        print(mots_filtres)
+        long_mots_filtres = len(mots_filtres)
+        print("The number of selected wotds are :",long_mots_filtres)
+        return long_mots_filtres
+    except FileNotFoundError:
+        print(f"Fichier '{a}' introuvable.")
+        return 0
+
+
+#PROTEINS
+
+def read_sequences(file_name):
+    sequences = {}
+    current_id = None
+    with open(file_name, 'r') as file:
+        for line in file:
+            line = line.strip()
+            if line.startswith('>'):
+                # Extrait l'identifiant de la protéine
+                identifier = line.split('|')
+                if len(identifier) >= 2:
+                    current_id = identifier[1]
+                    sequences[current_id] = ''
+                else:
+                    # Gérer les lignes qui ne correspondent pas au format attendu
+                    pass
+            else:
+                if current_id is not None:
+                    sequences[current_id] += line
+    
+    return sequences
+
+
+
+#SEARCHING FOR WORDS 
+
+def search_words_in_proteome(mots_filtres, sequences_dict):
+    sequences_with_words = {word: 0 for word in mots_filtres}
+
+    for word in mots_filtres:
+        for sequence_id, sequence in sequences_dict.items():
+            if word in sequence:
+                sequences_with_words[word] += 1
+
+    # Affichage des messages demandés
+    for word, count in sequences_with_words.items():
+        print(f"{word} found in {count} sequences")
+
+    return sequences_with_words
+
+
+#THE MOST FREQUENT WORD
+
+def find_most_frequent_word(dictionnaire_mots_sequences):
+    mot_plus_frequent = max(dictionnaire_mots_sequences, key=dictionnaire_mots_sequences.get)
+    nombre_sequences = dictionnaire_mots_sequences[mot_plus_frequent]
+    compte = dictionnaire_mots_sequences[mot_plus_frequent]
+
+
+    print(f"=> {mot_plus_frequent} trouvé dans {nombre_sequences} séquences")
+    print("2. What is this word ?")
+    print("This word is : ",mot_plus_frequent)
+    print("What percentage of the proteome sequences contain this word ?")
+    nombre_total_sequences = len(sequences_dict)  # Supposons que sequences_dict contient toutes les séquences du protéome
+    pourcentage = (compte / nombre_total_sequences) * 100
+    print(round(pourcentage, 2),"% des séquences du protéome contiennent ce mot.")
+
+
+#SEARCHING FOR WORDS 2
+
+
+def search_words_in_proteome2(mots_filtres, sequences_dict):
+    sequences_with_words2 = {word: {'count_sequences': 0, 'count_occurrences': 0} for word in mots_filtres}
+
+    for word in mots_filtres:
+        for sequence_id, sequence in sequences_dict.items():
+            if word in sequence:
+                sequences_with_words2[word]['count_sequences'] += 1
+                sequences_with_words2[word]['count_occurrences'] += sequence.count(word)
+
+    # Affichage des messages demandés
+    for word, counts in sequences_with_words2.items():
+        print(f"{word} found in {counts['count_sequences']} sequences with {counts['count_occurrences']} occurrences.")
+   
+    # Trouver le mot le plus fréquent
+    most_frequent_word = max(sequences_with_words2, key=lambda k: sequences_with_words2[k]['count_occurrences'])
+    occurrences = sequences_with_words2[most_frequent_word]['count_occurrences']
+
+    print(f"The most frequent word in the human proteome is '{most_frequent_word}' with {occurrences} occurrences.")
+
+    return sequences_with_words2
+
+
+
+
+# Appel de la fonction read_words()
+read_words('english-common-words.txt')
+
+# Lecture des séquences de protéines
+sequences_dict = read_sequences('human-proteome.fasta')
+
+# Affichage du nombre de séquences lues
+print(f"Nombre de séquences lues : {len(sequences_dict)}")
+
+# Affichage de la séquence associée à la protéine O95139 (à des fins de test)
+protein_id = 'O95139'
+print("Séquence associée à la protéine",protein_id)
+print(sequences_dict[protein_id])
+
+print("Ici search_word")
+
+# Appel de la fonction search_words_in_proteome() et stockage du dictionnaire retourné dans une variable
+sequences_with_words_dict = search_words_in_proteome(mots_filtres, sequences_dict)
+
+# Utilisation de la fonction find_most_frequent_word() avec le dictionnaire retourné
+find_most_frequent_word(sequences_with_words_dict)
+
+# Appel de la fonction search_words_in_proteome2() et stockage du dictionnaire retourné dans une variable
+sequences_with_words_dict2 = search_words_in_proteome2(mots_filtres, sequences_dict)
