@@ -1,16 +1,14 @@
 # Software group project
-#### write how to get it strated ?
-Summary 
+# Summary 
 
-Introduction
-I:English words in the human proteome 
+# I:English words in the human proteome 
 Amino acid composition
 words
 proteins
 searching for words
 the most frequent word
 Being more comprehensive
-II:Genbank to fasta converter 
+# II:Genbank to fasta converter 
 Reading the file
 Extracting the organism name
 Finding genes
@@ -21,25 +19,25 @@ Extracting genes
 Building the final script 
 
 
-Comprehensive Project Description 
+## Comprehensive Project Description 
 
 This description will provide a broad overview of this project and its stages, processes and objectives. 
 The problem and obstacles encoutered during certain processes will be briefly discussed. 
 
 
 
-Introduction
+## Introduction
 
 This group project's main goal was to create an extensive codebase and documentation that are kept in a GitHub repository called "pythongroup-project.". There are three subdirectories in the structure: words_in_proteome, genbank2fasta, and pygen. Each of these contains pertinent __init__.py files. There is also a Readme.md file which is an essential component that gives a detailed description of the project along with a working example that highlights the functionality of the code. 
 
 
-I- English Words in Proteome
+## I- English Words in Proteome
 
 The first part of the project called "ENGLISH WORDS IN PROTEOME" aims to search for occurrence of English words in the human proteome sequences. First, the 20 amino acids are used to create English words. Next, the 3000 most common English words are retrieved and processed from an external file.
 
 The project then requires that the human proteome sequences be acquired from a specified file that was obtained from the UniProt database. It is necessary to write functions that can read these sequences and look for English words in them. It is necessary to analyze the frequency of word occurrences within sequences, with a focus on determining the word that occurs the most frequently and estimating its abundance within the proteome.
 
-II- GENBANK TO FASTA CONVERTER
+## II- GENBANK TO FASTA CONVERTER
 
 Using the genetic data found in the Saccharomyces cerevisiae yeast chromosome I file, the next project phase entails converting GenBank files to FASTA format. Reading the file, extracting the names of the organisms, identifying and differentiating between sense and antisense genes, extracting the genome's nucleotide sequence, creating reverse complementary sequences, creating FASTA files, and extracting genes with their corresponding sequences are among the functionalities that still need to be developed.
 
@@ -49,7 +47,7 @@ Rewriting the script to include command-line arguments for the GenBank file anal
 
 In the section below, you can find the summary of the code and functions used in the project for both principal parts.
 
-Words 
+# Words 
 r = requests.get(url) variable holds the URL string pointing to a resource on the web. In this case, it seems to be a link to a FASTA file containing the human proteome data.
 requests.get(url) sends an HTTP GET request to the provided URL. It retrieves the content available at that URL.
 The response object (r) holds the result of the HTTP request. It contains information such as the response status, headers, and the content retrieved.
@@ -61,7 +59,7 @@ If an error occurs during the HTTP request (due to an invalid URL or any other i
 This code snippet demonstrates a simple implementation of making an HTTP GET request using the requests library and handling potential errors that might occur during the request process.
 
 
-Gene bank to fasta 
+## Gene bank to fasta 
 
 The read_file() function takes a file name as an argument and attempts to open and read the file.
 Using a try-except block, it opens the specified file in read mode ('r') and reads its content line by line, storing each line in a list called content.
@@ -83,4 +81,5 @@ For each test sequence, it converts the sequence to lowercase (.lower()) and cal
 Problems: A lot of problems were due to conflict issues after trying to merge branches. In fact, sometimes, one person created a branch but, meanwhile, another person could commit changes in the main branch before merging the modifications brought to a specific or several files. To resolve these conflicts, we used the tool included in VScode (merge editor) to solve these problems of merging. Usually, it showed the differences between the diverging files and asked if we wanted to accept the current code or the incomming code that was written in branch.
 
 
-Conclusion: To conclude, this project allowed us to be more comfortable with python and be able to gain experience and knowledge in this field. Overall, with this project, we had to develop a multidisciplinary approach integrating computational and biological sciences. This project required extensive documentation, structured code development, collaborative Git usage, and thorough exploration of biological data formats.
+## Conclusion: 
+To conclude, this project allowed us to be more comfortable with python and be able to gain experience and knowledge in this field. Overall, with this project, we had to develop a multidisciplinary approach integrating computational and biological sciences. This project required extensive documentation, structured code development, collaborative Git usage, and thorough exploration of biological data formats.
