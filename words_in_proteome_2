@@ -10,7 +10,7 @@ def read_words(file_path):
             for ligne in fichier:
                 mots = ligne.split()  # Séparation des mots dans la ligne
                 for mot in mots:
-                    if mot.isupper() and len(mot) >= 3:
+                    if len(mot) >= 3:
                         mots_filtres.append(mot)
     
         print(mots_filtres)
