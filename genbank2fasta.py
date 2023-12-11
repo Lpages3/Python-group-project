@@ -122,17 +122,21 @@ def main():
                 print(f"Original Sequence: {seq}, Reverse Complement: {reverse_comp_seq}")
         else:
             print("Failed to extract sequence or sequence is empty.")
-         else:
-        print("Failed to read file or file is empty.")
-    if sequence:
-        print(f"Number of bases in the extracted sequence: {len(sequence)}")
-        # Constructing reverse complementary sequence for testing
-        test_sequences = ['atcg', 'AATTCCGG', 'gattaca']
-        for seq in test_sequences:
-            reverse_comp_seq = construct_comp_inverse(seq.lower())
-            print(f"Original Sequence: {seq}, Reverse Complement: {reverse_comp_seq}")
-    else:
-            print("Failed to extract sequence or sequence is empty.")
+        #else:
+        #print("Failed to read file or file is empty.")
+
+ 
+    #Use of  read_file() function
+    file_content = read_file(file_name)
+   
+# Extract gene information
+    genes = find_genes(file_content)
+    print(f"Number of genes found: {len(genes)}")
+#Use of extract_sequence() function
+    dna_sequence = extract_sequence(file_content)
+
+# use of extract_genes() function 
+    #extract_genes(genes, dna_sequence, organism_name)
 
 if __name__ == "__main__":
     main()
@@ -186,4 +190,4 @@ genes = find_genes(file_content)
 dna_sequence = extract_sequence(file_content)
 
 # use of extract_genes() function 
-extract_genes(genes, dna_sequence, organism_name)
+#extract_genes(genes, dna_sequence, organism_name)
