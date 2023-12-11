@@ -1,6 +1,6 @@
-# Software group project
-# Summary 
+## Software group project : summary 
 
+## Main functions : 
 # I:English words in the human proteome 
 Amino acid composition
 words
@@ -26,7 +26,7 @@ The problem and obstacles encoutered during certain processes will be briefly di
 
 
 
-## Introduction
+# Introduction
 
 This group project's main goal was to create an extensive codebase and documentation that are kept in a GitHub repository called "pythongroup-project.". There are three subdirectories in the structure: words_in_proteome, genbank2fasta, and pygen. Each of these contains pertinent __init__.py files. There is also a Readme.md file which is an essential component that gives a detailed description of the project along with a working example that highlights the functionality of the code. 
 
