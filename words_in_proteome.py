@@ -35,7 +35,7 @@ def read_sequences(file_path):
             if line.startswith('>'):  # Identifying the protein identifier
                 if identifier:
                     sequences[identifier] = sequence
-                identifier = line.strip().split('|')[1]  # Extracting protein identifier
+                identifier = line.strip().split('|')[0]  # Extracting protein identifier
                 sequence = ''
             else:  # Accumulating protein sequence
                 sequence += line.strip()
