@@ -172,7 +172,7 @@ def extract_genes(genes, complete_sequence, organism_name):
 # Main function
 def main():
     #function reads the GenBank file, extracts organism information, etc..
-    file_name = 'NC_001133.GBK'  # Replace with your GenBank file name
+    file_name = 'NC_001133.gbk'  # Replace with your GenBank file name
     # Read the contents of the GenBank file
     file_content = read_file(file_name)
 
@@ -207,11 +207,12 @@ def main():
         test_sequences = ['atcg', 'AATTCCGG', 'gattaca']
         for seq in test_sequences:
             reverse_comp_seq = construct_comp_inverse(seq.lower())
+            #converts the current sequence to lowercase
             print(f"Original Sequence: {seq}, Reverse Complement: {reverse_comp_seq}")
 
         # Example of writing a FASTA file with the extracted sequence
         file_n = 'test.fasta'
-        comment = 'my comment'
+        comment = 'my comment' # # Comment or description for the sequence in the FASTA file
         sequence = 'atcgatcgatcg...'  # This would typically be the extracted sequence
         write_fasta(file_n, comment, sequence)
 
