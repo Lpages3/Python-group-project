@@ -20,25 +20,6 @@ def extract_organism(file_content):
             break
     return organism_name
 
-def main():
-    file_name = 'NC_001133.GBK'  # Replace with your GenBank file name
-    file_content = read_file(file_name)
-    
-    if file_content:
-        # Display the number of lines read
-        print(f"Number of lines read from '{file_name}': {len(file_content)}")
-        
-        # Extract the organism name
-        organism_name = extract_organism(file_content)
-        if organism_name:
-            print(f"Organism Name: {organism_name}")
-        else:
-            print("Organism name not found in the file.")
-    else:
-        print("Failed to read file or file is empty.")
-
-if __name__ == "__main__":
-    main()
 
 # Function to find genes in the GenBank file content
 
