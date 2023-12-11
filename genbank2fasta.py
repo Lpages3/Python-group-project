@@ -152,9 +152,9 @@ def main():
         antisense_genes = [gene for gene in genes if gene[2] == 'antisense']
         print(f"Number of sense genes: {len(sense_genes)}")
         print(f"Number of antisense genes: {len(antisense_genes)}")
+        
+        #Use of extract_sequence() function
         sequence = extract_sequence(file_content)
-
-        extract_sequence(file_content) #affiche 0, à revoir
 
         # Constructing reverse complementary sequence for testing
         test_sequences = ['atcg', 'AATTCCGG', 'gattaca']
@@ -167,9 +167,8 @@ def main():
         sequ='atcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcgatcg'
         write_fasta(file_n,comment,sequence)
 
-                        #Use of extract_sequence() function
-        dna_sequence = extract_sequence(file_content)
-        extract_genes(genes,dna_sequence,organism_name)
+        
+        extract_genes(genes,sequence,organism_name)
 
 
 if __name__ == "__main__":
