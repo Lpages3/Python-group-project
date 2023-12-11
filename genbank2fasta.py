@@ -3,8 +3,11 @@
 # Function to read the file and return its content as a list of lines
 def read_file(file_name):
     try:
+         # Attempt to open the specified file in read mode
         with open(file_name, 'r') as file:
+             # Read the file content line by line and store it as a list
             content = file.readlines()
+             # Return the content of the file as a list of lines
         return content
     except FileNotFoundError:
         print(f"File '{file_name}' not found.")
