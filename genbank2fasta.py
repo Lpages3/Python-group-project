@@ -141,7 +141,9 @@ def write_fasta(file_name, comment, sequence):
 # Set the file name to be written
 file_name = 'NC_001133.gbk'
 
-
+# EXTRACTING GENE 
+#function iterates through genes extracted from the GenBank file. For each gene, it extracts the sequence,
+#generates a file name, and writes the gene's sequence into a FASTA file using the write_fasta() function
          # Function to extract genes from the complete DNA sequence and create FASTA files for each gene
 def extract_genes(genes, complete_sequence, organism_name):
     # Loop through each gene extracted from the GenBank file
@@ -169,6 +171,7 @@ def extract_genes(genes, complete_sequence, organism_name):
 
 # Main function
 def main():
+    #function reads the GenBank file, extracts organism information, etc..
     file_name = 'NC_001133.GBK'  # Replace with your GenBank file name
     # Read the contents of the GenBank file
     file_content = read_file(file_name)
@@ -190,10 +193,13 @@ def main():
 
         # Count sense and antisense genes
         sense_genes = [gene for gene in genes if gene[2] == 'sense']
+         #This line of code creates a new list containing only the genes that have their type as 'sense'
         antisense_genes = [gene for gene in genes if gene[2] == 'antisense']
+        #This line of code creates a new list containing only the genes that have their type as 'antisense'
         print(f"Number of sense genes: {len(sense_genes)}")
         print(f"Number of antisense genes: {len(antisense_genes)}")
-
+#isplay the number of genes categorized as 'sense' and 'antisense' respectively
+        
         # Extract the complete DNA sequence from the GenBank file
         sequence = extract_sequence(file_content)
 
