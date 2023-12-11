@@ -53,7 +53,6 @@ def find_genes(file_content):
 #EXTRACTING THE NUCLEOTIDE SEQUENCE OF THE GENOME
 
 def extract_sequence(file_content):
-    dna_sequence = extract_sequence(file_content) #Utilisation de la fonction extract_sequence()
     is_dnaseq = False
     dna_sequence = ""
 
@@ -71,6 +70,8 @@ def extract_sequence(file_content):
     print(f"Number of bases in the extracted sequence: {sequence_length}")
 
     return dna_sequence
+
+#dna_sequence = extract_sequence(file_content) #Utilisation de la fonction extract_sequence()
 
 # Function to construct the reverse complementary sequence
 def construct_comp_inverse(dna_sequence):
@@ -103,19 +104,18 @@ def main():
         antisense_genes = [gene for gene in genes if gene[2] == 'antisense']
         print(f"Number of sense genes: {len(sense_genes)}")
         print(f"Number of antisense genes: {len(antisense_genes)}")
+        sequence = extract_sequence(file_content)
 
     else:
         print("Failed to read file or file is empty.")
-        
-        sequence = extract_sequence(file_content)
-        if sequence:
-            print(f"Number of bases in the extracted sequence: {len(sequence)}")
-            # Constructing reverse complementary sequence for testing
-            test_sequences = ['atcg', 'AATTCCGG', 'gattaca']
-            for seq in test_sequences:
-                reverse_comp_seq = construct_comp_inverse(seq.lower())
-                print(f"Original Sequence: {seq}, Reverse Complement: {reverse_comp_seq}")
-        else:
+    if sequence:
+        print(f"Number of bases in the extracted sequence: {len(sequence)}")
+        # Constructing reverse complementary sequence for testing
+        test_sequences = ['atcg', 'AATTCCGG', 'gattaca']
+        for seq in test_sequences:
+            reverse_comp_seq = construct_comp_inverse(seq.lower())
+            print(f"Original Sequence: {seq}, Reverse Complement: {reverse_comp_seq}")
+    else:
             print("Failed to extract sequence or sequence is empty.")
 
 if __name__ == "__main__":
