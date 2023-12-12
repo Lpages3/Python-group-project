@@ -25,21 +25,42 @@ This description will provide a broad overview of this project and its stages, p
 The problem and obstacles encoutered during certain processes will be briefly discussed. 
 
 
-
 # Introduction
 
 This group project's main goal was to create an extensive codebase and documentation that are kept in a GitHub repository called "pythongroup-project.". There are three subdirectories in the structure: words_in_proteome, genbank2fasta, and pygen. Each of these contains pertinent __init__.py files. There is also a Readme.md file which is an essential component that gives a detailed description of the project along with a working example that highlights the functionality of the code. 
 
+Finding English words in the human proteome and converting GenBank files to FASTA format are the two primary tasks of this project. These Python-based tools provide useful utilities for bioinformatics analysis, bridging the gap between biological and computational sciences.
+
 
 ## I- English Words in Proteome
 
-The first part of the project called "ENGLISH WORDS IN PROTEOME" aims to search for occurrence of English words in the human proteome sequences. First, the 20 amino acids are used to create English words. Next, the 3000 most common English words are retrieved and processed from an external file.
+###Objective
+To search for occurrences of English words within human proteome sequences, analyzing their frequency and identifying the most prevalent terms.
+
+###Features
+Creation of English words from amino acid sequences.
+Analysis of the 3000 most common English words in the human proteome.
+Identification of the most frequent word and its abundance.
+
+###Components
+words_in_proteome.py: Main script for processing and analyzing proteome data.
 
 The project then requires that the human proteome sequences be acquired from a specified file that was obtained from the UniProt database. It is necessary to write functions that can read these sequences and look for English words in them. It is necessary to analyze the frequency of word occurrences within sequences, with a focus on determining the word that occurs the most frequently and estimating its abundance within the proteome.
 
 ## II- GENBANK TO FASTA CONVERTER
 
 Using the genetic data found in the Saccharomyces cerevisiae yeast chromosome I file, the next project phase entails converting GenBank files to FASTA format. Reading the file, extracting the names of the organisms, identifying and differentiating between sense and antisense genes, extracting the genome's nucleotide sequence, creating reverse complementary sequences, creating FASTA files, and extracting genes with their corresponding sequences are among the functionalities that still need to be developed.
+
+###Objective
+To convert genetic data from GenBank format to FASTA format, focusing on the Saccharomyces cerevisiae yeast chromosome I.
+
+###Features
+Reading and processing GenBank files.
+Extracting organism names and gene sequences.
+Generating reverse complementary sequences.
+Writing data to FASTA format files.
+Components
+genbank2fasta.py: Main script for converting GenBank files to FASTA format.
 
 
 Rewriting the script to include command-line arguments for the GenBank file analysis is the last step. If the supplied file is not present or the script is run without arguments, error messages will be shown. During this phase, the os and sys modules will be used to handle file inputs efficiently.
