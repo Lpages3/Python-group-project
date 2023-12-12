@@ -21,40 +21,40 @@ Building the final script
 
 ## Comprehensive Project Description 
 
-This description will provide a broad overview of this project and its stages, processes and objectives. 
+  This description will provide a broad overview of this project and its stages, processes and objectives. 
 The problem and obstacles encoutered during certain processes will be briefly discussed. 
 
 
 # Introduction
 
-This group project's main goal was to create an extensive codebase and documentation that are kept in a GitHub repository called "pythongroup-project.". There are three subdirectories in the structure: words_in_proteome, genbank2fasta, and pygen. Each of these contains pertinent __init__.py files. There is also a Readme.md file which is an essential component that gives a detailed description of the project along with a working example that highlights the functionality of the code. 
+  This group project's main goal was to create an extensive codebase and documentation that are kept in a GitHub repository called "pythongroup-project.". There are three subdirectories in the structure: words_in_proteome, genbank2fasta, and pygen. Each of these contains pertinent __init__.py files. There is also a Readme.md file which is an essential component that gives a detailed description of the project along with a working example that highlights the functionality of the code. 
 
-Finding English words in the human proteome and converting GenBank files to FASTA format are the two primary tasks of this project. These Python-based tools provide useful utilities for bioinformatics analysis, bridging the gap between biological and computational sciences.
+  Finding English words in the human proteome and converting GenBank files to FASTA format are the two primary tasks of this project. These Python-based tools provide useful utilities for bioinformatics analysis, bridging the gap between biological and computational sciences.
 
 
 ## I- English Words in Proteome
 
-###Objective
+  ° Objective
 To search for occurrences of English words within human proteome sequences, analyzing their frequency and identifying the most prevalent terms.
 
-###Features
+  ° Features
 Creation of English words from amino acid sequences.
 Analysis of the 3000 most common English words in the human proteome.
 Identification of the most frequent word and its abundance.
 
-###Components
+  ° Components
 words_in_proteome.py: Main script for processing and analyzing proteome data.
 
-The project then requires that the human proteome sequences be acquired from a specified file that was obtained from the UniProt database. It is necessary to write functions that can read these sequences and look for English words in them. It is necessary to analyze the frequency of word occurrences within sequences, with a focus on determining the word that occurs the most frequently and estimating its abundance within the proteome.
+  The project then requires that the human proteome sequences be acquired from a specified file that was obtained from the UniProt database. It is necessary to write functions that can read these sequences and look for English words in them. It is necessary to analyze the frequency of word occurrences within sequences, with a focus on determining the word that occurs the most frequently and estimating its abundance within the proteome.
 
 ## II- GENBANK TO FASTA CONVERTER
 
-Using the genetic data found in the Saccharomyces cerevisiae yeast chromosome I file, the next project phase entails converting GenBank files to FASTA format. Reading the file, extracting the names of the organisms, identifying and differentiating between sense and antisense genes, extracting the genome's nucleotide sequence, creating reverse complementary sequences, creating FASTA files, and extracting genes with their corresponding sequences are among the functionalities that still need to be developed.
+  Using the genetic data found in the Saccharomyces cerevisiae yeast chromosome I file, the next project phase entails converting GenBank files to FASTA format. Reading the file, extracting the names of the organisms, identifying and differentiating between sense and antisense genes, extracting the genome's nucleotide sequence, creating reverse complementary sequences, creating FASTA files, and extracting genes with their corresponding sequences are among the functionalities that still need to be developed.
 
-###Objective
+  ° Objective
 To convert genetic data from GenBank format to FASTA format, focusing on the Saccharomyces cerevisiae yeast chromosome I.
 
-###Features
+ ° Features
 Reading and processing GenBank files.
 Extracting organism names and gene sequences.
 Generating reverse complementary sequences.
@@ -63,13 +63,13 @@ Components
 genbank2fasta.py: Main script for converting GenBank files to FASTA format.
 
 
-Rewriting the script to include command-line arguments for the GenBank file analysis is the last step. If the supplied file is not present or the script is run without arguments, error messages will be shown. During this phase, the os and sys modules will be used to handle file inputs efficiently.
+  Rewriting the script to include command-line arguments for the GenBank file analysis is the last step. If the supplied file is not present or the script is run without arguments, error messages will be shown. During this phase, the os and sys modules will be used to handle file inputs efficiently.
 
 
 In the section below, you can find the summary of the code and functions used in the project for both principal parts.
 
 # Words 
-r = requests.get(url) variable holds the URL string pointing to a resource on the web. In this case, it seems to be a link to a FASTA file containing the human proteome data.
+  r = requests.get(url) variable holds the URL string pointing to a resource on the web. In this case, it seems to be a link to a FASTA file containing the human proteome data.
 requests.get(url) sends an HTTP GET request to the provided URL. It retrieves the content available at that URL.
 The response object (r) holds the result of the HTTP request. It contains information such as the response status, headers, and the content retrieved.
 r.text retrieves the content received from the HTTP request made to the specified URL. It provides the text content of the HTTP response.
@@ -82,7 +82,7 @@ This code snippet demonstrates a simple implementation of making an HTTP GET req
 
 ## Gene bank to fasta 
 
-The read_file() function takes a file name as an argument and attempts to open and read the file.
+  The read_file() function takes a file name as an argument and attempts to open and read the file.
 Using a try-except block, it opens the specified file in read mode ('r') and reads its content line by line, storing each line in a list called content.
 If the file is not found (FileNotFoundError), it prints an error message and returns an empty list.
 The extract_organism() function takes the content of the GenBank file as input and searches for the line starting with ' ORGANISM'.
@@ -91,7 +91,7 @@ It returns the extracted organism name or an empty string if not found.
 The main() function initiates the execution of the code.
 It reads the GenBank file, checks if the file content is available, displays the number of lines read from the file, and extracts the organism name from the content.
 If the organism name is found, it prints the name; otherwise, it displays a message indicating the absence of the organism name or the failure to read the file.
-The construct_comp_inverse() function constructs the reverse complementary sequence of a given DNA sequence.
+  The construct_comp_inverse() function constructs the reverse complementary sequence of a given DNA sequence.
 It creates a dictionary complement mapping each DNA base ('a', 't', 'c', 'g') to its complementary base.
 Using a list comprehension, it constructs the complementary sequence (complementary_sequence) by replacing each base with its complement.
 Finally, it reverses the complementary_sequence to obtain the reverse complementary sequence and returns it.
@@ -103,4 +103,5 @@ Problems: A lot of problems were due to conflict issues after trying to merge br
 
 
 ## Conclusion: 
-To conclude, this project allowed us to be more comfortable with python and be able to gain experience and knowledge in this field. Overall, with this project, we had to develop a multidisciplinary approach integrating computational and biological sciences. This project required extensive documentation, structured code development, collaborative Git usage, and thorough exploration of biological data formats.
+
+  To conclude, this project allowed us to be more comfortable with python and be able to gain experience and knowledge in this field. Overall, with this project, we had to develop a multidisciplinary approach integrating computational and biological sciences. This project required extensive documentation, structured code development, collaborative Git usage, and thorough exploration of biological data formats.
